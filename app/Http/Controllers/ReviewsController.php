@@ -10,6 +10,11 @@ use App\Models\Review;
 
 class ReviewsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index():JsonResponse
     {
         return response()->json(Reviews::all(), 200);
