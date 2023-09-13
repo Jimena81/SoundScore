@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Review;
+use App\Models\Role;
 
 
 class User extends Authenticatable
@@ -20,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'id_rol'
     ];
     /**
      * The attributes that should be hidden for serialization.
@@ -43,5 +45,10 @@ class User extends Authenticatable
     public function reviews(): HasMany
     {
         return $this->HasMany(Review::class, 'id_user', 'id');
+    }
+
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class, 'id_rol');
     }
 }

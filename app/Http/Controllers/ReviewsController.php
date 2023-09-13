@@ -1,19 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\CreateUserRequest;
+//use App\Http\Requests\CreateUserRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Review;
+use App\Models\User;
 
 
 class ReviewsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     public function index():JsonResponse
     {
@@ -23,10 +24,9 @@ class ReviewsController extends Controller
 
 public function create(Request $request):JsonResponse
     {
-        $review = Reviews::create([
+        $review = Review::create([
             "title"=> $request->title,
             "content"=> $request->content,
-            "rating"=>$request->rating,
             "id_user"=>$request->id_user,
         ]);
         return response()->json([
@@ -55,7 +55,6 @@ public function create(Request $request):JsonResponse
         $review = Reviews::find($id);
         $review-> title = $request->title;
         $review-> content = $request->content;
-        $review-> rating = $request->rating;
         $review-> id_user = $request->id_user;
         $review->save();
 

@@ -29,7 +29,8 @@ class UserController extends Controller
          $user = User::create([
              "name"=> $request->name,
              "email"=> $request->email,
-             "password"=>Hash::make($request->password)
+             "password"=>Hash::make($request->password),
+             "id_rol"=>$request->id_rol
          ]);
          return response()->json([
              "status"=> true,
@@ -51,6 +52,7 @@ class UserController extends Controller
         $user-> name = $request->name;
         $user-> email = $request->email;
         $user-> password = $request->password;
+        $user-> id_rol = $request->id_rol;
         $user->save();
 
         return response()->json([
