@@ -27,7 +27,7 @@ class AuthController extends Controller
         ], 200);
     }
 
-    public function loginUser(LoginRequest $request):JsonResponse
+    public function loginUser(Request $request):JsonResponse
     {
        if(!Auth::attempt($request->only(['email', 'password'])))
        {
