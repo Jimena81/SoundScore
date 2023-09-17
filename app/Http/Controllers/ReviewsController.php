@@ -18,7 +18,7 @@ class ReviewsController extends Controller
 
     public function index():JsonResponse
     {
-        return response()->json(Reviews::all(), 200);
+        return response()->json(Review::all(), 200);
 
     }
 
@@ -36,7 +36,7 @@ public function create(Request $request):JsonResponse
 
     public function store(Request $request):JsonResponse
     {
-        $review = Reviews::create($request->all());
+        $review = Review::create($request->all());
         return response()->json([
             'success'=> true,
             'data'=> $review
@@ -45,14 +45,14 @@ public function create(Request $request):JsonResponse
 
     public function show(string $id):JsonResponse
     {
-        $review = Reviews::find($id);
+        $review = Review::find($id);
         return response()->json( $review, 200);
     }
 
     public function update(Request $request, $id):JsonResponse
     {
 
-        $review = Reviews::find($id);
+        $review = Review::find($id);
         $review-> title = $request->title;
         $review-> content = $request->content;
         $review-> id_user = $request->id_user;
@@ -66,7 +66,7 @@ public function create(Request $request):JsonResponse
 
     public function destroy($id):JsonResponse
     {
-        Reviews::find($id)->delete();
+        Review::find($id)->delete();
         return response()->json([
             "success"=> true,
         ], 200);
