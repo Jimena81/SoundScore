@@ -13,7 +13,7 @@ Route::resource('/users', UserController::class);
 Route::post('/create', [AuthController::class, 'createUser']);
 Route::post('/login',[AuthController::class, 'loginUser']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+     return $request->user();
+ });
 
 
