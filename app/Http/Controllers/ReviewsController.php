@@ -28,6 +28,7 @@ public function create(Request $request):JsonResponse
             "title"=> $request->title,
             "content"=> $request->content,
             "id_user"=>$request->id_user,
+            "rating"=>$request->rating,
         ]);
         return response()->json([
             "status"=> true,
@@ -56,6 +57,7 @@ public function create(Request $request):JsonResponse
         $review-> title = $request->title;
         $review-> content = $request->content;
         $review-> id_user = $request->id_user;
+        $review-> rating = $request->rating;
         $review->save();
 
         return response()->json([

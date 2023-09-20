@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('content')->nullable();
             $table->unsignedBigInteger('id_user')->default(1);
+            $table->integer('rating');
             $table->timestamps();
         });
     }
